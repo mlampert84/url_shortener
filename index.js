@@ -59,7 +59,6 @@ app.get('/new/*', async function (req, res){
   let  cursor = dbConnection.collection.find({original_url: req.params[0],short_url:{$in:[new RegExp(req.get('Host'),"g")]}})
   let websiteFound = await cursor.count()
  
- console.log("Short_url found in database ",req.get('Host'),": ",websiteFound)
   //coercing now the count of websitesFound to a boolean
   if(websiteFound){    
      let websiteItem = await cursor.next()
@@ -80,7 +79,7 @@ else
 
 app.get('/*',async function (req,res){
   let dbConnection = await connectToDB()
-  let cursor = dbConnection.collection.find({short_url: req.get('Host')+req.url})
+  let cursor = dbConnection.collection.find({short_url: {$in:[new RegExp(req.get('Host')+req.url+"$","g")]}})
   let websiteFound = await cursor.count()
 
   if(websiteFound){
