@@ -11,10 +11,10 @@ const  mongodb = require('mongodb');
 let uri = process.env.MONGOLAB_URI_FROM_LOCAL || process.env.DB_URL_FROM_HEROKU
 
 //Inserts a new short URL into the Database Collection
-async function insertNewShortURL(collection,url,hosturl){
+async function insertNewShortURL(collection,url,hosturl,hostprotocol){
 let randomURL 
  do{
-   randomURL = hosturl + "/" + Math.floor(Math.random()*10000)
+   randomURL = hostprotocol + "://" + hosturl + "/" + Math.floor(Math.random()*10000)
    sameShortURLFound = await collection.find({short_url: randomURL}).count()
    console.log(sameShortURLFound)
  }while(sameShortURLFound > 0)
@@ -49,6 +49,7 @@ async function closeDBConnection(client){
  
 }
 
+app.use(express.static('public'))
 
 app.get('/new/*', async function (req, res){
   if(validUrl.isUri(req.params[0])){
@@ -66,8 +67,8 @@ app.get('/new/*', async function (req, res){
   }
   else{
      console.log("We did not find a website in the database.")
-     let newEntry = await insertNewShortURL(dbConnection.collection,req.params[0],req.get('Host'))
-     res.end("No such website found. A new short URL was inserted: "+ JSON.stringify(newEntry,["original_url","short_url"]))
+     let newEntry = await insertNewShortURL(dbConnection.collection,req.params[0],req.get('Host'),req.protocol)
+     res.end("Website not found in the database. A new short URL has been created: "+ JSON.stringify(newEntry,["original_url","short_url"]))
   }
 
 closeDBConnection(dbConnection.theClient)

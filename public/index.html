@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>URL Shortener Microservice</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="/main.css">
+
+</head>
+<body>
+  <h1>URL Shortener Microservice</h1>
+  <p>Created according to the freeCodeCamp backend API Project <a href="https://www.freecodecamp.org/challenges/url-shortener-microservice">URL Shortener Microservice</a>.</p>
+
+<h2>Usage</h2>
+<ul><li>Pass a valid URL parameter of the form <code>/new/&lt;valid_url&gt;</code>. For example: <code>http://thawing-mesa-25685.herokuapp.com/new/http://google.com</code></li>
+<li>Based on the url parameter you entered as <code>/new/&lt;valid_url&gt;</code>, this microservice returns a JSON object containing the valid url you entered, <code>"original_url"</code>, as well a <code>"short_url"</code>. For example: <code>{"original_url":"http://google.com","short_url":"thawing-mesa-25685.herokuapp.com/353"}</code>. If the original url already exists in the database, then it returns that entry.  If the url doesn't already exist in the database, a new database entry is created.</li>
+<li>When you enter the "short_url" into your browser window, you will be redirected to the "original_url".  For example: <code>thawing-mesa-25685.herokuapp.com/353</code> would redirect, in this example, to http://google.com.</li>  
+</body>
