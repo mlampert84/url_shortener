@@ -1,4 +1,5 @@
 const express = require('express')
+const PORT = process.env.PORT || 5000
 const  dotenv = require('dotenv')
 dotenv.config()
 
@@ -96,4 +97,4 @@ app.get('/*',async function (req,res){
 closeDBConnection(dbConnection.theClient)
            })
 
-app.listen(3001, ()=> console.log("Listening on port 3001"))
+app.listen(PORT)
