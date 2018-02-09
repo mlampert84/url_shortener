@@ -12,6 +12,6 @@
 
 <h2>Usage</h2>
 <ul><li>Pass a valid URL parameter of the form <code>/new/&lt;valid_url&gt;</code>. For example: <code>http://thawing-mesa-25685.herokuapp.com/new/http://google.com</code></li>
-<li>Based on the url parameter you entered as <code>/new/&lt;valid_url&gt;</code>, this microservice returns a JSON object containing the valid url you entered, <code>"original_url"</code>, as well a <code>"short_url"</code>. For example: <code>{"original_url":"http://google.com","short_url":"thawing-mesa-25685.herokuapp.com/353"}</code>. If the original url already exists in the database, then it returns that entry.  If the url doesn't already exist in the database, a new database entry is created.</li>
-<li>When you enter the "short_url" into your browser window, you will be redirected to the "original_url".  For example: <code>thawing-mesa-25685.herokuapp.com/353</code> would redirect, in this example, to http://google.com.</li>  
+<li>Based on the url parameter you entered as <code>/new/&lt;valid_url&gt;</code>, this microservice returns a JSON object containing the valid url you entered, <code>"original_url"</code>, as well a <code>"short_url"</code>. For example: <code>{"original_url":"http://google.com","short_url":"http://thawing-mesa-25685.herokuapp.com/353"}</code>. If the original url already exists in the database, then it returns that entry.  If the url doesn't already exist in the database, a new database entry is created.</li>
+<li>When you enter the "short_url" into your browser window, you will be redirected to the "original_url".  For example: <code>thawing-mesa-25685.herokuapp.com/353</code> would redirect, in this example, to http://google.com.</li>
 </body>
